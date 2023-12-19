@@ -1,8 +1,9 @@
-package com.bootcoding.user.command;
+package com.bootcoding.user.command.impl;
 
+import com.bootcoding.user.command.Command;
 import com.bootcoding.user.model.Result;
 
-public class ExitCommand implements Command{
+public class ExitCommand implements Command {
     @Override
     public Result execute(String[] attributes) {
         // write logic for exit system

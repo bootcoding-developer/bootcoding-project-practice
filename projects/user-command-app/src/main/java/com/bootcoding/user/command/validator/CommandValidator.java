@@ -1,4 +1,4 @@
-package com.bootcoding.user.command;
+package com.bootcoding.user.command.validator;
 
 public interface CommandValidator {
     public boolean validate(String[] attributes);

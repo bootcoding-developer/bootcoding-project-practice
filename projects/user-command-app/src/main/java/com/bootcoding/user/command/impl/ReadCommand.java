@@ -1,8 +1,10 @@
-package com.bootcoding.user.command;
+package com.bootcoding.user.command.impl;
 
+import com.bootcoding.user.command.Command;
+import com.bootcoding.user.command.validator.CommandValidator;
 import com.bootcoding.user.model.Result;
 
-public class ReadCommand implements Command, CommandValidator{
+public class ReadCommand implements Command, CommandValidator {
     @Override
     public Result execute(String[] attributes) {
         // write logic for read user

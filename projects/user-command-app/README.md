@@ -2,21 +2,31 @@
 # Design User Management system using Command Line Interface (CLI)
 
 ## Features
-- Create User using command as create
-  - Provide user attributes 
-    - as -n for name, -p for phone, -a for address, -e for email id
+  - Create User using command as create
+    - Provide user attributes 
+      - -n for name
+      - -p for phone
+      - -a for address
+      - -e for email id
 
-- Read User using command as read
+  - Read User using command as read
     - Provide user attributes
-        - -n for name, read user by name
-        - -i for id, read user by id
-        - p for phone, read user by phone
+      - -n for name, read user by name
+      - -i for id, read user by id 
+      - --all get all users
       
-- Delete User using command as delete
+  - Delete User using command as delete
+    - Provide user attributes 
+      - -i for id, delete user by id
+
+  - Update Action
     - Provide user attributes
-        - -n for name, delete user by name
-        - -i for id, delete user by id
-- Update Action
+      - i for id, update user by id
+      - -f fieldName
+      - -v value of that field
+
+
+We will use SOLID Design Principles to design User Management System using Command Line Interface (CLI)
 
 Break Down
 - action

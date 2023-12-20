@@ -25,6 +25,7 @@
       - -f fieldName
       - -v value of that field
 
+OOAD - 
 
 We will use SOLID Design Principles to design User Management System using Command Line Interface (CLI)
 
@@ -49,6 +50,11 @@ Delete Action
 - Action Name : Delete
 - Attributes: -i
 - Result: message / User doesn't exists (success/failure)
+
+
+- Data ?  User -- Model
+- Operations
+- Similarity
 
 
 - User model

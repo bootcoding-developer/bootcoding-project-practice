@@ -2,6 +2,7 @@ package com.bootcoding.user;
 
 import com.bootcoding.user.command.Command;
 import com.bootcoding.user.command.impl.CreateCommand;
+import com.bootcoding.user.command.impl.ExitCommand;
 import com.bootcoding.user.command.impl.ReadCommand;
 import com.bootcoding.user.model.Result;
 
@@ -10,28 +11,33 @@ import java.util.Scanner;
 public class Application {
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        while (true) {
 
-        System.out.println("======================= Bootcoding Command Utility =================");
-        System.out.println("To create User, command should be like ::: create -n name -p phone -a addr -e emailId");
-        System.out.println("======================= Bootcoding Command Utility =================");
-        System.out.println("======================= Bootcoding Command Utility =================");
-        System.out.println("======================= Bootcoding Command Utility =================");
+            Scanner sc = new Scanner(System.in);
 
-        System.out.println("You are free to enter any command!");
+            System.out.println("======================= Bootcoding Command Utility =================");
+            System.out.println("To create User, command should be like ::: create -n name -p phone -a addr -e emailId");
+            System.out.println("======================= Bootcoding Command Utility =================");
+            System.out.println("======================= Bootcoding Command Utility =================");
+            System.out.println("======================= Bootcoding Command Utility =================");
 
-        String commandStr = sc.nextLine();
+            System.out.println("You are free to enter any command!");
 
-        String[] commandWithAttrs = commandStr.split(" ");
+            String commandStr = sc.nextLine();
 
-        Command command = findCommand(commandWithAttrs[0]);
-        try{
-            Result result = command.execute(commandWithAttrs);
-            System.out.println(result);
-        }catch (Exception ex){
-            System.err.println(ex.getMessage());
+            String[] commandWithAttrs = commandStr.split(" ");
+
+            Command command = findCommand(commandWithAttrs[0]);
+            if(null == command || command instanceof ExitCommand){
+                break;
+            }
+            try {
+                Result result = command.execute(commandWithAttrs);
+                System.out.println(result);
+            } catch (Exception ex) {
+                System.err.println(ex.getMessage());
+            }
         }
-
     }
 
     private static Command findCommand(String cmd) {

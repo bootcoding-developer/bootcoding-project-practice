@@ -4,6 +4,7 @@ import com.bootcoding.user.command.Command;
 import com.bootcoding.user.command.impl.CreateCommand;
 import com.bootcoding.user.command.impl.ExitCommand;
 import com.bootcoding.user.command.impl.ReadCommand;
+import com.bootcoding.user.command.impl.UpdateCommand;
 import com.bootcoding.user.model.Result;
 
 import java.util.Scanner;
@@ -43,8 +44,11 @@ public class Application {
     private static Command findCommand(String cmd) {
         switch (cmd){
             case "create":
-                Command command = new CreateCommand();
-                return command;
+                return new CreateCommand();
+            case "read":
+                return new ReadCommand();
+            case "update":
+                return new UpdateCommand();
             default:
                 return null;
         }

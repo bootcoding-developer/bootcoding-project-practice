@@ -26,7 +26,7 @@ public class CreateCommand implements Command, CommandValidator {
             InMemoryStore.users.add(user);
             return Result.builder().message("SUCCESS").users(InMemoryStore.users).build();
         }
-        return Result.builder().message("Invalid command arguments").build();
+        return Result.builder().message("Invalid create command arguments").build();
     }
 
     @Override

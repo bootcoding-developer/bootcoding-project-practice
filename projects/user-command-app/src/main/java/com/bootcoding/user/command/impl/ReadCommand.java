@@ -9,6 +9,7 @@ import com.bootcoding.user.store.InMemoryStore;
 import java.util.Arrays;
 
 public class ReadCommand implements Command, CommandValidator {
+
     @Override
     public Result execute(String[] attributes) throws Exception {
         // write logic for read user
@@ -29,7 +30,6 @@ public class ReadCommand implements Command, CommandValidator {
         return Result.builder().message("SUCCESS")
                 .users(InMemoryStore.users).build();
     }
-
     private Result readById(String id) {
         // searching given id into collection users
         // traverse users collection
@@ -43,7 +43,6 @@ public class ReadCommand implements Command, CommandValidator {
         }
         return Result.builder().message("FAILED: User Id (" + id + ") doesn't exists!").build();
     }
-
     private Result readByName(String name) {
         for (User user : InMemoryStore.users) {
             if (user.getName().equals(name)) {
@@ -59,9 +58,7 @@ public class ReadCommand implements Command, CommandValidator {
     @Override
     public boolean validate(String[] attributes) throws Exception {
         if (attributes.length < 2 && attributes.length > 3) {
-            throw new Exception("Please provide all attributes: " +
-                    "For ex: \ncreate -n \"Ramesh\" -p 8989 -a " +
-                    "\"Nagpur Kdk college cha maaage\" -e \"iamcoder@gmail.com\"");
+            throw new Exception("Please provide required attributes to read user");
         }
 
         if (!attributes[0].equals("read")) {
@@ -71,7 +68,6 @@ public class ReadCommand implements Command, CommandValidator {
         String attrName = attributes[1];
         return validateAttributes(attrName);
     }
-
 
     private boolean validateAttributes(String attrName) {
         switch (attrName) {

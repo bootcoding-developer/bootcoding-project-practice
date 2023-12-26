@@ -85,9 +85,6 @@ public class UpdateCommand implements Command, CommandValidator {
         return null;
     }
 
-
-
-
     private void updateName(User user, String newValue) {
         user.setName(newValue);
     }

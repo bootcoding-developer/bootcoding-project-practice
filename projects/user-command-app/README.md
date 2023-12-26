@@ -66,10 +66,6 @@ public interface Command{
     public Result execute(String[] attributes);
 }
 
-public class Result{
-    String message;
-    List<User> users;
-}
 public class CreateCommand implements Command{
 
     public Result execute(String[] attributes){
@@ -97,4 +93,11 @@ public class UpdateCommand implements Command{
         // logic for update user
     }
 }
+
+
+public class Result{
+    String message;
+    List<User> users;
+}
+
 ```

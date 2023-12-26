@@ -5,6 +5,8 @@ import com.bootcoding.user.command.validator.CommandValidator;
 import com.bootcoding.user.model.Result;
 import com.bootcoding.user.model.User;
 import com.bootcoding.user.store.InMemoryStore;
+import com.bootcoding.user.utils.Application;
+import com.bootcoding.user.utils.ValidationUtility;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,22 +17,27 @@ public class CreateCommand implements Command, CommandValidator {
     @Override
     public Result execute(String[] attributes) throws Exception{
         if(validate(attributes)){
-            // start processing
-            User user = User.builder()
-                    .id(UUID.randomUUID().toString())
-                    .build();
-            for(int i = 1; i < attributes.length ; i = i + 2) {
-                String attrName = attributes[i];
-                setAttributeValue(user, attrName, attributes[i + 1]);
-            }
+            User user = prepUser(attributes);
             InMemoryStore.users.add(user);
             return Result.builder().message("SUCCESS").users(InMemoryStore.users).build();
         }
         return Result.builder().message("Invalid create command arguments").build();
     }
 
+    private User prepUser(String[] attributes) throws Exception {
+        User user = User.builder()
+                .id(UUID.randomUUID().toString())
+                .build();
+        for(int i = 1; i < attributes.length ; i = i + 2) {
+            String attrName = attributes[i];
+            setAttributeValue(user, attrName, attributes[i + 1]);
+        }
+        return user;
+    }
+
     @Override
     public boolean validate(String[] attributes) throws Exception{
+
         if(attributes.length != 9){
             throw new Exception("Please provide all attributes: " +
                     "For ex: \ncreate -n \"Ramesh\" -p 8989 -a " +
@@ -43,30 +50,12 @@ public class CreateCommand implements Command, CommandValidator {
         int i = 1;
         while(isValid && i < attributes.length){
             String attrName = attributes[i];
-            isValid = validateAttributes(attrName);
+            isValid = ValidationUtility.validateAttributes(attrName);
             i = i + 2;
         }
 
         return isValid;
     }
-
-
-    private boolean validateAttributes(String attrName) {
-        switch (attrName){
-            case "-n":
-                return true;
-            case "-p":
-                return true;
-            case "-a":
-                return true;
-            case "-e":
-                return true;
-            default:
-                return false;
-
-        }
-    }
-
 
     private void setAttributeValue(User user, String attrName, String value) throws Exception{
         switch (attrName){
@@ -87,5 +76,4 @@ public class CreateCommand implements Command, CommandValidator {
 
         }
     }
-
 }

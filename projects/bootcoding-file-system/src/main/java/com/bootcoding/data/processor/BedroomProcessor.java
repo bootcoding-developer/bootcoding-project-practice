@@ -2,14 +2,17 @@ package com.bootcoding.data.processor;
 
 import com.bootcoding.data.model.House;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class BedroomProcessor {
 
     public List<House> getHouses(List<House> houses, int bedroomSize){
-        return houses.stream().filter(h -> h.getBedrooms() == bedroomSize)
+        List<House> bhkList = houses.stream().filter(h -> h.getBedrooms() == bedroomSize)
                 .collect(Collectors.toList());
+        Collections.sort(bhkList);
+        return bhkList;
 
     }
 

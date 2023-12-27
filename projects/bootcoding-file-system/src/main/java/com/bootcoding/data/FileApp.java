@@ -24,10 +24,10 @@ public class FileApp {
         IFileWriter jsonWriter = new JsonFileWriter();
 
         List data = fileReader.read();
-        fw.write(bp.getHouses(data, 2), "./2bhk.csv");
-        fw.write(bp.getHouses(data, 3), "./3bhk.csv");
-        fw.write(bp.getHouses(data, 4), "./4bhk.csv");
-        fw.write(bp.getHouses(data, 5), "./5bhk.csv");
+        fw.write(bp.getHouses(data, 2), "/Users/bootcoding/tasks/2bhk.csv");
+        fw.write(bp.getHouses(data, 3), "/Users/bootcoding/tasks/3bhk.csv");
+        fw.write(bp.getHouses(data, 4), "/Users/bootcoding/tasks/4bhk.csv");
+        fw.write(bp.getHouses(data, 5), "/Users/bootcoding/tasks/5bhk.csv");
 
 
         jsonWriter.write(bp.getHouses(data, 2), "/Users/bootcoding/tasks/2bhk.json");

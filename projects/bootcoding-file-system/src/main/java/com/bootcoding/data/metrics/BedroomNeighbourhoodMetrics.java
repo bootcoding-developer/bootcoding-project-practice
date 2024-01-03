@@ -2,17 +2,15 @@ package com.bootcoding.data.metrics;
 
 import com.bootcoding.data.model.BedroomsCount;
 import com.bootcoding.data.model.House;
-import com.bootcoding.data.model.MetricResult;
 import com.bootcoding.data.model.NeighbourhoodCount;
 import com.bootcoding.data.report.JsonFileWriter;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class BedroomNeibourMetrics implements MetricCollector{
+public class BedroomNeighbourhoodMetrics implements MetricCollector{
     @Override
     public void collect(List<House> data) {
 

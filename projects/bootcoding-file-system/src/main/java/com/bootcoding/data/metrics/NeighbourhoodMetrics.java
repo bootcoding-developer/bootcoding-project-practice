@@ -10,14 +10,11 @@ import java.util.stream.Collectors;
 public class NeighbourhoodMetrics implements MetricCollector{
     @Override
     public void collect(List<House> data) {
-
-        // How to collect
         Map<String, List<House>> collect =
                 data.stream().collect(Collectors.groupingBy(House::getNeighbourhood));
-
-        collect.forEach((k,v) -> {
-            System.out.println(k + ":" + v.size());
-        });
+        collect.forEach((neighbour,values) ->
+                System.out.println(neighbour + ":" + values.size())
+        );
     }
 
 

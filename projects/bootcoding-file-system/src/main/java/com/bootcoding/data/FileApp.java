@@ -1,8 +1,7 @@
 package com.bootcoding.data;
 
 import com.bootcoding.data.duplicate.DuplicateFInder;
-import com.bootcoding.data.metrics.BedroomMetrics;
-import com.bootcoding.data.metrics.BedroomNeibourMetrics;
+import com.bootcoding.data.metrics.BedroomNeighbourhoodMetrics;
 import com.bootcoding.data.metrics.MetricCollector;
 import com.bootcoding.data.metrics.NeighbourhoodMetrics;
 import com.bootcoding.data.processor.BedroomProcessor;
@@ -32,7 +31,7 @@ public class FileApp {
         MetricCollector collector = new NeighbourhoodMetrics();
         collector.collect(data);
 
-        MetricCollector bCollector = new BedroomNeibourMetrics();
+        MetricCollector bCollector = new BedroomNeighbourhoodMetrics();
         bCollector.collect(data);
         // Count of specific condition - Metrics
 

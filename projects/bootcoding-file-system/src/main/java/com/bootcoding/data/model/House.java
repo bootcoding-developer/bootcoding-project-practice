@@ -4,9 +4,11 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;
 
+import java.util.List;
+
 @Data
 @Builder
-
+@ToString
 public class House implements Comparable{
     
      int squareFeet;
@@ -26,4 +28,5 @@ public class House implements Comparable{
           House h = (House) o;
           return this.neighbourhood.compareTo(h.neighbourhood);
      }
+
 }

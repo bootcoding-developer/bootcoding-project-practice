@@ -1,5 +1,6 @@
 package com.bootcoding.data;
 
+import com.bootcoding.data.duplicate.DuplicateFInder;
 import com.bootcoding.data.metrics.BedroomMetrics;
 import com.bootcoding.data.metrics.BedroomNeibourMetrics;
 import com.bootcoding.data.metrics.MetricCollector;
@@ -27,6 +28,7 @@ public class FileApp {
 
         List data = fileReader.read();
 
+        DuplicateFInder.findDuplicates(data);
         MetricCollector collector = new NeighbourhoodMetrics();
         collector.collect(data);
 

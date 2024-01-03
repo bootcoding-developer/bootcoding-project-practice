@@ -1,14 +1,16 @@
 package com.bootcoding.data;
 
+import com.bootcoding.data.metrics.BedroomMetrics;
+import com.bootcoding.data.metrics.BedroomNeibourMetrics;
+import com.bootcoding.data.metrics.MetricCollector;
+import com.bootcoding.data.metrics.NeighbourhoodMetrics;
 import com.bootcoding.data.processor.BedroomProcessor;
-import com.bootcoding.data.reader.DataReader;
 import com.bootcoding.data.reader.file.FileReader;
 import com.bootcoding.data.reader.file.csv.CsvFileReader;
 import com.bootcoding.data.report.CsvFileWriter;
 import com.bootcoding.data.report.IFileWriter;
 import com.bootcoding.data.report.JsonFileWriter;
 
-import java.io.FileWriter;
 import java.util.List;
 
 public class FileApp {
@@ -24,6 +26,15 @@ public class FileApp {
         IFileWriter jsonWriter = new JsonFileWriter();
 
         List data = fileReader.read();
+
+        MetricCollector collector = new NeighbourhoodMetrics();
+        collector.collect(data);
+
+        MetricCollector bCollector = new BedroomNeibourMetrics();
+        bCollector.collect(data);
+        // Count of specific condition - Metrics
+
+
         fw.write(bp.getHouses(data, 2), "/Users/bootcoding/tasks/2bhk.csv");
         fw.write(bp.getHouses(data, 3), "/Users/bootcoding/tasks/3bhk.csv");
         fw.write(bp.getHouses(data, 4), "/Users/bootcoding/tasks/4bhk.csv");

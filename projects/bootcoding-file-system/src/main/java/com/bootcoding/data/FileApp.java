@@ -4,6 +4,7 @@ import com.bootcoding.data.duplicate.DuplicateFInder;
 import com.bootcoding.data.metrics.BedroomNeighbourhoodMetrics;
 import com.bootcoding.data.metrics.MetricCollector;
 import com.bootcoding.data.metrics.NeighbourhoodMetrics;
+import com.bootcoding.data.model.NeighbourhoodCount;
 import com.bootcoding.data.processor.BedroomProcessor;
 import com.bootcoding.data.reader.file.FileReader;
 import com.bootcoding.data.reader.file.csv.CsvFileReader;
@@ -26,6 +27,12 @@ public class FileApp {
         IFileWriter jsonWriter = new JsonFileWriter();
 
         List data = fileReader.read();
+
+        final NeighbourhoodCount neighbourhoodCount = NeighbourhoodCount.builder().build();
+        neighbourhoodCount.setRural(100);
+        neighbourhoodCount.setUrban(200);
+        neighbourhoodCount.setSuburb(200);
+        neighbourhoodCount.setTotal(500);
 
         DuplicateFInder.findDuplicates(data);
         MetricCollector collector = new NeighbourhoodMetrics();

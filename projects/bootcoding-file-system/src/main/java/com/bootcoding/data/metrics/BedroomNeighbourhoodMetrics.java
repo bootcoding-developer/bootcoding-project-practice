@@ -62,3 +62,16 @@ public class BedroomNeighbourhoodMetrics implements MetricCollector{
         }
     }
 }
+
+What will happen when you attempt to compile this code?
+
+public interface MyInterface {
+    void methodA();
+    void methodB();
+}
+
+public class MyClass implements MyInterface {
+    public void methodA() {
+        System.out.println("Method A");
+    }
+}

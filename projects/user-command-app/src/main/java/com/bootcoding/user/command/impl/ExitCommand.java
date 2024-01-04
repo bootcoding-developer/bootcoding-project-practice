@@ -7,8 +7,7 @@ import com.bootcoding.user.utils.Application;
 public class ExitCommand implements Command {
     @Override
     public Result execute(String[] attributes) {
-        // write logic for exit system
-
+        System.out.println("Exiting Command App!");
         return null;
     }
 

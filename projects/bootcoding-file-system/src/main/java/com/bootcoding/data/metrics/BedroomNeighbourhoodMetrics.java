@@ -11,12 +11,34 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class BedroomNeighbourhoodMetrics implements MetricCollector{
+
+    //
+
+
     @Override
     public void collect(List<House> data) {
 
         // How to collect
         Map<Integer, List<House>> bedrooms = data.stream()
                 .collect(Collectors.groupingBy(House::getBedrooms));
+
+        // bedrooms
+        // 2: houses (5k)
+            // "Rural", houses (1k)
+            // "Urban", houses (2k)
+            // "Suburb", houses (2k)
+        // 3: houses (10k)
+            // "Rural", houses (1k)
+            // "Urban", houses (2k)
+            // "Suburb", houses (2k)
+        // 4: houses (7k)
+            // "Rural", houses (1k)
+            // "Urban", houses (2k)
+            // "Suburb", houses (2k)
+        // 5: houses (6k)
+            // "Rural", houses (1k)
+            // "Urban", houses (2k)
+            // "Suburb", houses (2k)
 
         bedrooms.forEach((bhk, records) -> {
             Map<String, List<House>> bhkNebours = records.stream().collect(Collectors.groupingBy(House::getNeighbourhood));
@@ -63,15 +85,3 @@ public class BedroomNeighbourhoodMetrics implements MetricCollector{
     }
 }
 
-What will happen when you attempt to compile this code?
-
-public interface MyInterface {
-    void methodA();
-    void methodB();
-}
-
-public class MyClass implements MyInterface {
-    public void methodA() {
-        System.out.println("Method A");
-    }
-}

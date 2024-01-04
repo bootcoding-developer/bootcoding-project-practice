@@ -26,6 +26,8 @@ public class CsvFileWriter implements IFileWriter {
                     ex.printStackTrace();
                 }
             });
+            fw.flush();
+            fw.close();
         }catch (IOException ex){
             ex.printStackTrace();
         }

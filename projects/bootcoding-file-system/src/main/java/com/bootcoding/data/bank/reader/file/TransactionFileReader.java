@@ -18,6 +18,7 @@ public class TransactionFileReader {
             CSVReader reader = new CSVReader(new FileReader(filePath));
             List<String[]> data = reader.readAll();
             List<BankTransaction> bankTransactions = convert(data);
+
             return bankTransactions;
         }catch (IOException ex){
             ex.printStackTrace();
